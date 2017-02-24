@@ -3,7 +3,10 @@ const webpack = require('webpack');
 
 module.exports = {
   target: 'node',
-  entry: './index.js',
+  entry: [
+    'webpack-hot-middleware/client',
+    './index.js',
+  ],
   output: {
     path: path.resolve(__dirname, '../dist'),
     filename: 'bundle.js',
@@ -30,6 +33,8 @@ module.exports = {
     }],
   },
   plugins: [
-    new webpack.IgnorePlugin(/webpack/),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
+    // new webpack.IgnorePlugin(/webpack/),
   ],
 };
