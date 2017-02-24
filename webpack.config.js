@@ -10,10 +10,13 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, '../dist'),
     filename: 'bundle.js',
-    publicPath: '/assets/',
+    publicPath: '/',
   },
   devServer: {
     port: 5000,
+  },
+  externals: {
+    webpack: 'webpack',
   },
   module: {
     loaders: [{
@@ -35,6 +38,5 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
-    // new webpack.IgnorePlugin(/webpack/),
   ],
 };
